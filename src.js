@@ -19,8 +19,6 @@ const mvp = {
     diamond: 0.9
 }
 
-const destroyStar = 12;
-
 const data = {
     0:  { success: 0.95 },
     1:  { success: 0.90 },
@@ -180,6 +178,18 @@ function calculateStep(args, star, results) {
             destroys: 1,
             noDestroyChance: 0
         };
+        var destroyStar;
+        if (star <= 19) {
+          destroyStar = 12;
+        } else if (star == 20) {
+          destroyStar = 15;
+        } else if (star <= 22) {
+          destroyStar = 17;
+        } else if (star <= 25) {
+          destroyStar = 19;
+        } else {
+          destroyStar = 20;
+        }
         if (star > destroyStar) {
             var range = calculateRange(args, destroyStar, star, results);
             entry.price += range.price;
